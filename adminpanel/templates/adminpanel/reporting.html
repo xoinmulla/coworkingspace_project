@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Reporting - Co-working Space Management{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="row mb-4">
+    <div class="col-12 text-center">
+      <h2 class="fw-bold text-white">Reporting Overview</h2>
+      <p class="text-white">Detailed insights about space utilization, revenue, and feedback.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Space Utilization -->
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Space Utilization</h5>
+          <p class="display-4">{{ report.space_utilization }}%</p>
+          <p class="text-muted">Total Bookings</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estimated Revenue -->
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Estimated Revenue</h5>
+          <p class="display-4">${{ report.revenue }}</p>
+          <p class="text-muted">Projected earnings from bookings</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Feedback -->
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total Feedback Received</h5>
+          <p class="display-4">{{ report.feedback_count }}</p>
+          <p class="text-muted">Number of feedback submissions</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Dashboard Button -->
+  <div class="text-center mt-4">
+    <a href="{% url 'admin-dashboard' %}" class="btn btn-primary btn-lg">Back to Dashboard</a>
+  </div>
+</section>
+{% endblock %}

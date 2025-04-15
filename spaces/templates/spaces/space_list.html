@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Available Spaces - Co-working Space Management{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-white">Explore Available Co-working Spaces</h2>
+        <p class="text-white">Find your perfect workspace by browsing our listings below.</p>
+    </div>
+
+    {% if spaces %}
+        <div class="row">
+            {% for space in spaces %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        {% if space.image %}
+                            <img src="{{ space.image.url }}" class="card-img-top" alt="{{ space.name }}">
+                        {% else %}
+                            <img src="https://i.pinimg.com/736x/a1/06/c7/a106c7e0256afac9d2e4295c42bf0163.jpg" class="card-img-top" alt="No image">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ space.name }}</h5>
+                            <p class="card-text text-muted">${{ space.pricing }} per day</p>
+                            <a href="{% url 'space-detail' space.id %}" class="btn btn-outline-primary w-100">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No spaces available at the moment. Please check back later.</p>
+    {% endif %}
+</section>
+{% endblock %}

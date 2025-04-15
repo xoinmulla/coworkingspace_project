@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Co-working Space Management{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="row mb-4">
+    <div class="col-12 text-center">
+      <h2 class="fw-bold text-white">Admin Dashboard</h2>
+      <p class="text-white">Overview of your co-working space management system.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Total Spaces -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total Spaces</h5>
+          <p class="display-4">{{ total_spaces }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Bookings -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total Bookings</h5>
+          <p class="display-4">{{ total_bookings }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Payments -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Completed Payments</h5>
+          <p class="display-4">${{ total_payments }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Reviews -->
+    <div class="col-md-6 col-lg-3 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total Reviews</h5>
+          <p class="display-4">{{ total_reviews }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <nav class="mt-4">
+      <a href="{% url 'space-management' %}" class="btn btn-primary btn-lg mx-2">Manage Spaces</a>
+      <a href="{% url 'booking-management' %}" class="btn btn-secondary btn-lg mx-2">Manage Bookings</a>
+      <a href="{% url 'reporting' %}" class="btn btn-info btn-lg mx-2">Reporting</a>
+    </nav>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container my-5">
+        <h2 class="text-center mb-4 text-white">User Reviews</h2>
+        <div class="row">
+            <!-- Loop through all reviews and display them -->
+            {% for review in reviews %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ review.user.username }}</h5>
+                            <p class="card-text">
+                                <strong>Rating:</strong>
+                                <!-- Loop to display yellow stars for the rating -->
+                                {% for i in review.full_stars %}
+                                    <span class="text-warning">&#9733;</span>
+                                {% endfor %}
+                                <!-- Loop to display gray stars for the remaining stars -->
+                                {% for i in review.empty_stars %}
+                                    <span class="text-muted">&#9733;</span>
+                                {% endfor %}
+                                /5
+                            </p>
+                            <p class="card-text">{{ review.comment|truncatewords:20 }}</p>
+                            <p class="text-muted"><em>{{ review.created_at|date:"F j, Y, g:i a" }}</em></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

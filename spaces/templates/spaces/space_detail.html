@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{{ space.name }} - Space Details{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="row">
+    <!-- Image Column -->
+    <div class="col-md-6 mb-4">
+      {% if space.image %}
+        <img src="{{ space.image.url }}" class="img-fluid rounded shadow" alt="{{ space.name }}">
+      {% else %}
+        <img src="https://i.pinimg.com/736x/a1/06/c7/a106c7e0256afac9d2e4295c42bf0163.jpg" class="img-fluid rounded shadow" alt="No image available">
+      {% endif %}
+    </div>
+
+    <!-- Details Column -->
+    <div class="col-md-6">
+      <h2 class="fw-bold mb-3 text-white">{{ space.name }}</h2>
+      <p class="mb-3 text-white">{{ space.description }}</p>
+      <p class="mb-3 text-white"><strong>Address:</strong> {{ space.address }}</p>
+      <p class="mb-3 text-white"><strong>Pricing:</strong> <span class="text-primary">${{ space.pricing }}</span> / day</p>
+
+      <a href="/bookings/book/{{ space.id }}/" class="btn btn-success btn-lg mt-3">Book This Space</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

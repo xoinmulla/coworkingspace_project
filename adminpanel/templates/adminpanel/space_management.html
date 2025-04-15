@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Space Management - Co-working Space Management{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="row mb-4">
+    <div class="col-12 text-center">
+      <h2 class="fw-bold text-white">Manage All Spaces</h2>
+      <p class="text-white">Overview of all available spaces for booking.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    {% for space in spaces %}
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <img src="https://i.pinimg.com/736x/a1/06/c7/a106c7e0256afac9d2e4295c42bf0163.jpg" class="card-img-top" alt="Image of {{ space.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ space.name }}</h5>
+          <p class="card-text">{{ space.description|truncatewords:20 }}</p>
+          <p class="text-muted">Price: <strong>${{ space.pricing }}</strong></p>
+          <p class="text-muted">Available: {{ space.available|yesno:"Yes,No" }}</p>
+          <a href="{% url 'space-detail' space.id %}" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="{% url 'admin-dashboard' %}" class="btn btn-secondary btn-lg">Back to Dashboard</a>
+  </div>
+</section>
+{% endblock %}

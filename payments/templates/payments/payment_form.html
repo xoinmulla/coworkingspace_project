@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment for Booking</title>
+</head>
+<body>
+  <h1>Payment for {{ booking.space.name }}</h1>
+  <p>Amount: $50.00</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Pay Now</button>
+  </form>
+</body>
+</html>
